@@ -35,7 +35,6 @@
 @interface LPMessageTemplatesClass : NSObject <UIAlertViewDelegate, WKNavigationDelegate>
 
 + (LPMessageTemplatesClass *)sharedTemplates;
-+ (BOOL) triggerEmbeddedUrl;
 
 - (void)disableAskToAsk;
 - (void)refreshPushPermissions;
