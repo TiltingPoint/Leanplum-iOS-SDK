@@ -1379,6 +1379,13 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
 
         NSString *url = [navigationAction request].URL.absoluteString;
         NSDictionary *queryComponents = [self queryComponentsFromUrl:url];
+        
+        if([Leanplum triggerEmbeddedUrlHandled:url])
+        {
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
+        
         if ([url rangeOfString:[context stringNamed:LPMT_ARG_URL_CLOSE]].location != NSNotFound) {
             [self dismiss];
             if (queryComponents[@"result"]) {

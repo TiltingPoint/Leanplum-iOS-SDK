@@ -511,6 +511,12 @@ BOOL inForeground = NO;
     LP_END_USER_CODE
 }
 
++ (BOOL)triggerEmbeddedUrlHandled: (NSString *)url
+{
+    return[LPInternalState sharedState].embeddedUrlHandler != nil &&
+    [[LPInternalState sharedState].embeddedUrlHandler onEmbeddedUrl:url];
+}
+
 + (LPMessageArchiveData *)messageArchiveDataFromContext:(LPActionContext *)context {
     NSString *messageID = context.messageId;
     NSString *messageBody = [self messageBodyFromContext:context];
@@ -1517,6 +1523,18 @@ BOOL inForeground = NO;
         [LPInternalState sharedState].messageDisplayedBlocks = [NSMutableArray array];
     }
     [[LPInternalState sharedState].messageDisplayedBlocks addObject:[block copy]];
+    LP_END_TRY
+}
+
++ (void)onEmbeddedHTMLUrl:(LeanplumEmbeddedHTMLUrlCallbackBlock)codeBlock {
+    
+    if(!codeBlock){
+        [self throwError:@"[Leanplum onEmbeddedHTMLUrl] Nil block parameter provided."];
+        return;
+    }
+    
+    LP_TRY
+    [LPInternalState sharedState].embeddedUrlHandler = [[EmbeddedHTMLUrlCallback alloc] initWithCallback:codeBlock];
     LP_END_TRY
 }
 

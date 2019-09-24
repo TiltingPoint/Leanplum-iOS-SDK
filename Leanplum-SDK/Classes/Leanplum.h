@@ -420,6 +420,15 @@ typedef void (^LeanplumMessageDisplayedCallbackBlock)(LPMessageArchiveData *mess
  */
 + (void)onMessageDisplayed:(LeanplumMessageDisplayedCallbackBlock)block;
 
+typedef BOOL (^LeanplumEmbeddedHTMLUrlCallbackBlock)(NSString *url);
+
+/**
+ * Block to call when a Embedded HTML Url is triggered.
+ */
++ (void)onEmbeddedHTMLUrl:(LeanplumEmbeddedHTMLUrlCallbackBlock)block;
+
++ (BOOL) triggerEmbeddedUrlHandled: (NSString *)url;
+
 /**
  * Clears cached values for messages, variables and test assignments.
  * Use sparingly as if the app is updated, you'll have to deal with potentially

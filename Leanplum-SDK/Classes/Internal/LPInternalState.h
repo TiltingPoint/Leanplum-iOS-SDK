@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "LPRegisterDevice.h"
 #import "LPActionManager.h"
+#import "EmbeddedHTMLUrlCallback.h"
 
 @interface LPInternalState : NSObject
 
@@ -18,6 +19,7 @@
 @property(strong, nonatomic) NSMutableSet *startResponders, *variablesChangedResponders,
 *interfaceChangedResponders, *eventsChangedResponders, *noDownloadsResponders;
 @property(assign, nonatomic) NSUncaughtExceptionHandler *customExceptionHandler;
+@property(strong, nonatomic) EmbeddedHTMLUrlCallback *embeddedUrlHandler;
 @property(strong, nonatomic) LPRegisterDevice *registration;
 @property(assign, nonatomic) BOOL calledStart, hasStarted, hasStartedAndRegisteredAsDeveloper,
 startSuccessful, issuedStart, stripViewControllerFromState;
