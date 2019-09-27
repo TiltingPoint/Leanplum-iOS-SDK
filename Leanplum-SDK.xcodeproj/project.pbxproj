@@ -185,6 +185,8 @@
 		5B23412D21ED970600206ACB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B23412C21ED970600206ACB /* UIKit.framework */; };
 		5B23414721ED995500206ACB /* LeanplumSDK_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B233C3321ED902900206ACB /* LeanplumSDK_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61B186A824E44665ED526E8F /* Pods_Leanplum_iOS_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090C8E91DAFDE753EF49E13C /* Pods_Leanplum_iOS_Example.framework */; };
+		971745F5233AA4D7004942F8 /* EmbeddedHTMLUrlCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 971745F4233AA4D7004942F8 /* EmbeddedHTMLUrlCallback.m */; };
+		971745F7233AA4ED004942F8 /* EmbeddedHTMLUrlCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 971745F6233AA4ED004942F8 /* EmbeddedHTMLUrlCallback.h */; };
 		A8DBE2652204FDA00080818A /* LPFileTransferManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A8DBE2632204FDA00080818A /* LPFileTransferManager.h */; };
 		A8DBE2662204FDA00080818A /* LPFileTransferManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8DBE2642204FDA00080818A /* LPFileTransferManager.m */; };
 		F10BE7FBEDF1FD42E0D5C8C0 /* Pods_LeanplumSDKTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4F21D3DB0BE369EA3E87FDC /* Pods_LeanplumSDKTests.framework */; };
@@ -415,6 +417,8 @@
 		5B23413F21ED985B00206ACB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B23414021ED985B00206ACB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8B6F288A14D3DC03AE34508A /* Pods-Leanplum-iOS-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Leanplum-iOS-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Leanplum-iOS-Example/Pods-Leanplum-iOS-Example.release.xcconfig"; sourceTree = "<group>"; };
+		971745F4233AA4D7004942F8 /* EmbeddedHTMLUrlCallback.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmbeddedHTMLUrlCallback.m; sourceTree = "<group>"; };
+		971745F6233AA4ED004942F8 /* EmbeddedHTMLUrlCallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmbeddedHTMLUrlCallback.h; sourceTree = "<group>"; };
 		9A9A6BD32DCA7415FAF3B6A7 /* Pods_Leanplum_tvOS_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Leanplum_tvOS_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4A6ABC6920A431C861DC0C7 /* Pods-LeanplumSDKTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LeanplumSDKTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LeanplumSDKTests/Pods-LeanplumSDKTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A8DBE2632204FDA00080818A /* LPFileTransferManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LPFileTransferManager.h; sourceTree = "<group>"; };
@@ -798,6 +802,8 @@
 				5B233FEC21ED964F00206ACB /* LPEnumConstants.h */,
 				5B233FED21ED964F00206ACB /* LPContextualValues.m */,
 				5B233FEE21ED964F00206ACB /* Monitoring */,
+				971745F4233AA4D7004942F8 /* EmbeddedHTMLUrlCallback.m */,
+				971745F6233AA4ED004942F8 /* EmbeddedHTMLUrlCallback.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -1077,6 +1083,7 @@
 				5B23411921ED965000206ACB /* UIAlertView+MKNetworkKitAdditions.h in Headers */,
 				5B2340C521ED964F00206ACB /* LPActionArg.h in Headers */,
 				5B23406121ED964F00206ACB /* LPRequestFactory.h in Headers */,
+				971745F7233AA4ED004942F8 /* EmbeddedHTMLUrlCallback.h in Headers */,
 				5B2340AD21ED964F00206ACB /* LPFeatureFlagManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1353,6 +1360,7 @@
 				5B23407B21ED964F00206ACB /* LPInbox.m in Sources */,
 				5B2340B921ED964F00206ACB /* Leanplum.m in Sources */,
 				5B23409F21ED964F00206ACB /* LPEventDataManager.m in Sources */,
+				971745F5233AA4D7004942F8 /* EmbeddedHTMLUrlCallback.m in Sources */,
 				5B2340D121ED965000206ACB /* LPDatabase.m in Sources */,
 				5B2340F121ED965000206ACB /* Leanplum_Reachability.m in Sources */,
 				5B23408121ED964F00206ACB /* LPVarCache.m in Sources */,
