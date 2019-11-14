@@ -511,6 +511,17 @@ BOOL inForeground = NO;
     LP_END_USER_CODE
 }
 
+
++ (void)triggerMessageClosed
+{
+    LP_BEGIN_USER_CODE
+    for (LeanplumMessageClosedCallbackBlock block in [LPInternalState sharedState]
+         .messageClosedBlocks.copy) {
+        block();
+    }
+    LP_END_USER_CODE
+}
+
 + (BOOL)triggerEmbeddedUrlHandled: (NSString *)url
 {
     return[LPInternalState sharedState].embeddedUrlHandler != nil &&
@@ -1523,6 +1534,22 @@ BOOL inForeground = NO;
         [LPInternalState sharedState].messageDisplayedBlocks = [NSMutableArray array];
     }
     [[LPInternalState sharedState].messageDisplayedBlocks addObject:[block copy]];
+    LP_END_TRY
+}
+
++ (void)onMessageClosed:(LeanplumMessageClosedCallbackBlock)block{
+    
+    if(!block)
+    {
+       [self throwError:@"[Leanplum onMessageClosed:] Nil block "
+         @"parameter provided."];
+        return;
+    }
+    LP_TRY
+    if (![LPInternalState sharedState].messageClosedBlocks) {
+        [LPInternalState sharedState].messageClosedBlocks = [NSMutableArray array];
+    }
+    [[LPInternalState sharedState].messageClosedBlocks addObject:[block copy]];
     LP_END_TRY
 }
 

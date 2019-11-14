@@ -420,6 +420,16 @@ typedef void (^LeanplumMessageDisplayedCallbackBlock)(LPMessageArchiveData *mess
  */
 + (void)onMessageDisplayed:(LeanplumMessageDisplayedCallbackBlock)block;
 
+
+typedef void (^LeanplumMessageClosedCallbackBlock)(void);
+
+/**
+ * Block to call when a message is closed
+ */
++ (void)onMessageClosed:(LeanplumMessageClosedCallbackBlock)block;
++ (void)triggerMessageClosed;
+
+
 typedef BOOL (^LeanplumEmbeddedHTMLUrlCallbackBlock)(NSString *url);
 
 /**
@@ -427,7 +437,7 @@ typedef BOOL (^LeanplumEmbeddedHTMLUrlCallbackBlock)(NSString *url);
  */
 + (void)onEmbeddedHTMLUrl:(LeanplumEmbeddedHTMLUrlCallbackBlock)block;
 
-+ (BOOL) triggerEmbeddedUrlHandled: (NSString *)url;
++ (BOOL)triggerEmbeddedUrlHandled: (NSString *)url;
 
 /**
  * Clears cached values for messages, variables and test assignments.

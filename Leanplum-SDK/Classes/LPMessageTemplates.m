@@ -544,7 +544,7 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
     LPActionContext *context = _contexts.lastObject;
     @try {
         [_contexts removeLastObject];
-        
+        [Leanplum triggerMessageClosed];
         if ([context.actionName isEqualToString:LPMT_ALERT_NAME]) {
             [context runActionNamed:LPMT_ARG_DISMISS_ACTION];
         } else {
@@ -816,11 +816,13 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
 
 - (void)accept
 {
+    [Leanplum triggerMessageClosed];
     [self closePopupWithAnimation:YES actionNamed:LPMT_ARG_ACCEPT_ACTION track:YES];
 }
 
 - (void)dismiss
 {
+    [Leanplum triggerMessageClosed];
     [self closePopupWithAnimation:YES];
 }
 
@@ -832,6 +834,7 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
 
 - (void)deferPush
 {
+    [Leanplum triggerMessageClosed];
     [self closePopupWithAnimation:YES actionNamed:LPMT_ARG_CANCEL_ACTION track:YES];
 }
 
@@ -1429,6 +1432,7 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
 
         if ([url rangeOfString:[context stringNamed:LPMT_ARG_URL_ACTION]].location != NSNotFound) {
             if (queryComponents[@"action"]) {
+                [Leanplum triggerMessageClosed];
                 [self closePopupWithAnimation:YES actionNamed:queryComponents[@"action"] track:NO];
             }
             decisionHandler(WKNavigationActionPolicyCancel);
@@ -1438,6 +1442,7 @@ static NSString *DEFAULTS_LEANPLUM_ENABLED_PUSH = @"__Leanplum_enabled_push";
         if ([url rangeOfString:
              [context stringNamed:LPMT_ARG_URL_TRACK_ACTION]].location != NSNotFound) {
             if (queryComponents[@"action"]) {
+                [Leanplum triggerMessageClosed];
                 [self closePopupWithAnimation:YES actionNamed:queryComponents[@"action"] track:YES];
             }
             decisionHandler(WKNavigationActionPolicyCancel);
