@@ -1596,6 +1596,24 @@ BOOL inForeground = NO;
     LP_END_USER_CODE
 }
 
++ (void)onEmbeddedHTMLUrl:(LeanplumEmbeddedHTMLUrlCallbackBlock)codeBlock {
+    
+    if(!codeBlock){
+        [self throwError:@"[Leanplum onEmbeddedHTMLUrl] Nil block parameter provided."];
+        return;
+    }
+
+    LP_TRY
+    [LPInternalState sharedState].embeddedUrlHandler = [[EmbeddedHTMLUrlCallback alloc] initWithCallback:codeBlock];
+    LP_END_TRY
+}
+
++ (BOOL)triggerEmbeddedUrlHandled: (NSString *)url
+{
+    return[LPInternalState sharedState].embeddedUrlHandler != nil &&
+    [[LPInternalState sharedState].embeddedUrlHandler onEmbeddedUrl:url];
+}
+
 + (void)clearUserContent {
     [[LPVarCache sharedCache] clearUserContent];
     [[LPCountAggregator sharedAggregator] incrementCount:@"clear_user_content"];
