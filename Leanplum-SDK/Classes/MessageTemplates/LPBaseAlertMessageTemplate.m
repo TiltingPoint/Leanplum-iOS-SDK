@@ -18,6 +18,7 @@
 - (void)alertDismissedWithButtonIndex:(NSInteger)buttonIndex
 {
     LPActionContext *context = self.contexts.lastObject;
+    [Leanplum triggerMessageClosed:context];
     @try {
         [self.contexts removeLastObject];
 

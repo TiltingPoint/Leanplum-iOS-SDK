@@ -19,6 +19,7 @@
                                   withFile:LPMT_DEFAULT_APP_ICON]
                  ]
                  withResponder:^BOOL(LPActionContext *context) {
+            [Leanplum triggerMessageClosed:context];
             @try {
                 NSString *filename = [context stringNamed:LPMT_ARG_APP_ICON];
                 [self setAlternateIconWithFilename:filename];

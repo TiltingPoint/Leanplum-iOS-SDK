@@ -40,6 +40,7 @@
     }
 
     LPActionContext *context = self.contexts.lastObject;
+    [Leanplum triggerMessageClosed:context];
     [self.contexts removeLastObject];
 
     void (^finishCallback)(void) = ^() {

@@ -18,11 +18,13 @@
              withResponder:^BOOL(LPActionContext *context) {
         @try {
             [self appStorePrompt];
+            [Leanplum triggerMessageClosed:context];
             return YES;
         }
         @catch (NSException *exception) {
             LOG_LP_MESSAGE_EXCEPTION;
         }
+        [Leanplum triggerMessageClosed:context];
         return NO;
     }];
 }

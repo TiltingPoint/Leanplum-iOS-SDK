@@ -420,6 +420,13 @@ typedef void (^LeanplumMessageDisplayedCallbackBlock)(LPMessageArchiveData *mess
  */
 + (void)onMessageDisplayed:(LeanplumMessageDisplayedCallbackBlock)block;
 
+typedef void (^LeanplumMessageClosedCallbackBlock)(LPMessageArchiveData *messageArchiveData);
+
+/**
+ * Block to call when a message is closed
+ */
++ (void)onMessageClosed:(LeanplumMessageClosedCallbackBlock)block;
++ (void)triggerMessageClosed:(LPActionContext *)context;
 /**
  * Clears cached values for messages, variables and test assignments.
  * Use sparingly as if the app is updated, you'll have to deal with potentially

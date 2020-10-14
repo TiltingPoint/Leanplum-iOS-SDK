@@ -1544,6 +1544,33 @@ BOOL inForeground = NO;
     LP_END_TRY
 }
 
++ (void)onMessageClosed:(LeanplumMessageClosedCallbackBlock)block{
+    
+    if(!block)
+    {
+       [self throwError:@"[Leanplum onMessageClosed:] Nil block "
+         @"parameter provided."];
+        return;
+    }
+    LP_TRY
+    if (![LPInternalState sharedState].messageClosedBlocks) {
+        [LPInternalState sharedState].messageClosedBlocks = [NSMutableArray array];
+    }
+    [[LPInternalState sharedState].messageClosedBlocks addObject:[block copy]];
+    LP_END_TRY
+}
+
++ (void)triggerMessageClosed:(LPActionContext *)context
+{
+    LP_BEGIN_USER_CODE
+    LPMessageArchiveData *messageArchiveData = [self messageArchiveDataFromContext:context];
+    for (LeanplumMessageClosedCallbackBlock block in [LPInternalState sharedState]
+         .messageClosedBlocks.copy) {
+        block(messageArchiveData);
+    }
+    LP_END_USER_CODE
+}
+
 + (void)clearUserContent {
     [[LPVarCache sharedCache] clearUserContent];
     [[LPCountAggregator sharedAggregator] incrementCount:@"clear_user_content"];
