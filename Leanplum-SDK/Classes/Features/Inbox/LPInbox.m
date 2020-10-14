@@ -120,18 +120,6 @@ static NSObject *updatingLock;
     return @"";
 }
 
-- (NSString *)actionData
-{
-    LP_TRY
-        NSString *actData = @"";
-        NSData * jsonData = [NSJSONSerialization dataWithJSONObject:_context.actionArgs[LP_VALUE_DEFAULT_PUSH_ACTION] options:0 error:nil];
-        actData = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-
-        return actData;
-    LP_END_TRY
-    return @"";
-}
-
 /**
  * This is a helper method that will return the cached file path of the image URL.
  * Will return nil if there is no file.

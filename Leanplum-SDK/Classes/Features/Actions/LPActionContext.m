@@ -181,11 +181,6 @@ typedef void (^LPFileCallback)(NSString* value, NSString *defaultValue);
     return _name;
 }
 
-- (NSDictionary *)actionArgs
-{
-    return _args;
-}
-
 - (void)setProperArgs
 {
     if (!_preventRealtimeUpdating && [[LPVarCache sharedCache] contentVersion] > _contentVersion) {

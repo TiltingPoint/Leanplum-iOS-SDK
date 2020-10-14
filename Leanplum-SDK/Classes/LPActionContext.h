@@ -27,7 +27,6 @@
 @interface LPActionContext : NSObject
 
 - (NSString *)actionName;
-- (NSDictionary *)actionArgs;
 
 - (NSString *)stringNamed:(NSString *)name;
 - (NSString *)fileNamed:(NSString *)name;

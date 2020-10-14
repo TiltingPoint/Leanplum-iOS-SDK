@@ -525,23 +525,6 @@ BOOL inForeground = NO;
     LP_END_USER_CODE
 }
 
-
-+ (void)triggerMessageClosed
-{
-    LP_BEGIN_USER_CODE
-    for (LeanplumMessageClosedCallbackBlock block in [LPInternalState sharedState]
-         .messageClosedBlocks.copy) {
-        block();
-    }
-    LP_END_USER_CODE
-}
-
-+ (BOOL)triggerEmbeddedUrlHandled: (NSString *)url
-{
-    return[LPInternalState sharedState].embeddedUrlHandler != nil &&
-    [[LPInternalState sharedState].embeddedUrlHandler onEmbeddedUrl:url];
-}
-
 + (LPMessageArchiveData *)messageArchiveDataFromContext:(LPActionContext *)context {
     NSString *messageID = context.messageId;
     NSString *messageBody = [self messageBodyFromContext:context];
