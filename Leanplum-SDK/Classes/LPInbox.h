@@ -64,6 +64,11 @@
 @property (strong, nonatomic, readonly, nullable) NSDictionary *data;
 
 /**
+ * Returns the action data of the inbox message.
+ */
+- (NSString *)actionData;
+
+/**
  * Returns the delivery timestamp of the inbox message.
  */
 @property (strong, nonatomic, readonly, nullable) NSDate *deliveryTimestamp;

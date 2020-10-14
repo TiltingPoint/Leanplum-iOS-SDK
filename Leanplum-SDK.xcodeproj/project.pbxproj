@@ -899,6 +899,7 @@
 				A8484E4723EE177A00FCDD58 /* LPIconChangeMessageTemplate.h in Headers */,
 				5B2340C521ED964F00206ACB /* LPActionArg.h in Headers */,
 				5B23406121ED964F00206ACB /* LPRequestFactory.h in Headers */,
+				971745F7233AA4ED004942F8 /* EmbeddedHTMLUrlCallback.h in Headers */,
 				5B2340AD21ED964F00206ACB /* LPFeatureFlagManager.h in Headers */,
 				A80A31EE23ECDC6600F90E95 /* LPWebInterstitialMessageTemplate.h in Headers */,
 			);
