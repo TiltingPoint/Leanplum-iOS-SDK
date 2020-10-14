@@ -563,6 +563,7 @@ BOOL inForeground = NO;
 
 + (void)triggerAction:(LPActionContext *)context handledBlock:(LeanplumHandledBlock)handledBlock
 {
+    [Leanplum triggerActionTriggered:context];
     LeanplumVariablesChangedBlock triggerBlock = ^{
         BOOL handled = NO;
         LP_BEGIN_USER_CODE
@@ -1567,6 +1568,30 @@ BOOL inForeground = NO;
     for (LeanplumMessageClosedCallbackBlock block in [LPInternalState sharedState]
          .messageClosedBlocks.copy) {
         block(messageArchiveData);
+    }
+    LP_END_USER_CODE
+}
+
++ (void)onActionTriggered:(LeanplumActionTriggeredCallbackBlock)block {
+    if(!block)
+    {
+       [self throwError:@"[Leanplum onActionTriggered:] Nil block "
+         @"parameter provided."];
+        return;
+    }
+    LP_TRY
+    if (![LPInternalState sharedState].actionTriggeredBlocks) {
+        [LPInternalState sharedState].actionTriggeredBlocks = [NSMutableArray array];
+    }
+    [[LPInternalState sharedState].actionTriggeredBlocks addObject:[block copy]];
+    LP_END_TRY
+}
+
++ (void)triggerActionTriggered: (LPActionContext *)context {
+    LP_BEGIN_USER_CODE
+    for (LeanplumActionTriggeredCallbackBlock block in [LPInternalState sharedState]
+         .actionTriggeredBlocks.copy) {
+        block(context);
     }
     LP_END_USER_CODE
 }
