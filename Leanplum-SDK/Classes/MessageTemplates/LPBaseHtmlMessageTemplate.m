@@ -30,6 +30,7 @@
     }
 
     LPActionContext *context = self.contexts.lastObject;
+    [Leanplum triggerMessageClosed:context];
     [self.contexts removeLastObject];
 
     ((WKWebView *)self.popupView).navigationDelegate = nil;
@@ -37,7 +38,6 @@
 
     void (^finishCallback)(void) = ^() {
         [self removeAllViewsFrom:self.popupGroup];
-
         if (actionName) {
             if (track) {
                 [context runTrackedActionNamed:actionName];
