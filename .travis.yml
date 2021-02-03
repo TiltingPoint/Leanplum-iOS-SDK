@@ -1,9 +1,9 @@
 language: objective-c
-osx_image: xcode10
+osx_image: xcode11.3
 
 xcode_workspace: Example/Leanplum-SDK.xcworkspace
 xcode_scheme: Leanplum-SDK-Example
-xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=13.3,name=iPhone 11
 
 cache: cocoapods
 podfile: Example/Podfile
@@ -18,8 +18,7 @@ before_deploy:
 deploy:
   - provider: releases
     skip_cleanup: true
-    api_key:
-      secure: $GITHUB_TOKEN
+    api_key: $GITHUB_TOKEN
     file: Leanplum.framework.zip
     draft: true
     on:
